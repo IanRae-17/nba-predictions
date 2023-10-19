@@ -1,12 +1,12 @@
 import ContentNav from "./components/ContentNav";
 import Nav from "./components/Nav";
+import Standings from "./components/Standings";
 import "./css/App.css";
 
 // React
 import { useState } from "react";
 
 function App() {
-  const [standingsContent, setStandingsContent] = useState("EAST");
   const [awardContent, setAwardContent] = useState("MVP");
   const [allTeamContent, setAllTeamContent] = useState("ALL-NBA");
 
@@ -14,11 +14,8 @@ function App() {
     <div className="main-container">
       <Nav />
       <main>
-        {/* <ContentNav
-          headers={["EAST", "WEST"]}
-          activePage={standingsContent}
-          setActivePage={setStandingsContent}
-        />
+        <Standings />
+        {/* 
         <ContentNav
           headers={["MVP", "DPOY", "ROTY", "SMOTY", "MIP", "COTY"]}
           activePage={awardContent}
