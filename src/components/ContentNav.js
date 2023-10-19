@@ -1,17 +1,17 @@
 import "../css/content_nav.css";
 
-function ContentNav({ headers, activePage }) {
+function ContentNav({ headers, activePage, setActivePage }) {
   function renderHeader(header) {
     if (activePage === header) {
       return (
         <li className="active">
-          <a>{header}</a>
+          <a onClick={() => setActivePage(header)}>{header}</a>
         </li>
       );
     } else {
       return (
         <li>
-          <a>{header}</a>
+          <a onClick={() => setActivePage(header)}>{header}</a>
         </li>
       );
     }
