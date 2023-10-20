@@ -1,12 +1,23 @@
-function EastStandings() {
+import teamImages from "../assets/team_logos";
+
+console.log(teamImages);
+
+function StandingsTable({ header, standings }) {
   return (
     <div className="table-container">
-      <h2>Eastern Conference</h2>
+      <div className="header">
+        <h2>{header}</h2>
+      </div>
       <div>
         <table>
           <tbody>
             {standings.map((standing) => (
-              <tr>{standing}</tr>
+              <tr>
+                <div className="img-container">
+                  <img src={teamImages[standing]} />
+                </div>
+                <div>{standing}</div>
+              </tr>
             ))}
           </tbody>
         </table>
@@ -15,7 +26,7 @@ function EastStandings() {
   );
 }
 
-export default EastStandings;
+export default StandingsTable;
 
 const standings = [
   "Boston Celtics",
