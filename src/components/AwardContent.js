@@ -1,9 +1,11 @@
 function AwardContent({ header, mainImage, playerName, honorableMentions }) {
   return (
     <>
+      <div className="award-main-header">
+        <h1>{header}</h1>
+      </div>
       <div className="award-container">
         <div className="award-header">
-          <h2>{header}</h2>
           <h2>{playerName}</h2>
         </div>
 

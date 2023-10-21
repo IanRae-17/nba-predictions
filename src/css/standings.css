@@ -46,6 +46,7 @@ table :nth-child(10) {
 
 .table-container{
   padding: .5rem;
+  padding-bottom: 0;
 }
 
 .table-container .header{
