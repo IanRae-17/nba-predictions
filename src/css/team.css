@@ -1,0 +1,27 @@
+.team-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    gap: .25rem;
+}
+
+.team-container .team-image {
+    max-width: 100%;
+    
+}
+
+.team-player {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    flex-direction: column;
+}
+
+.team-player h3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: .5px solid rgb(240, 240, 240);
+}

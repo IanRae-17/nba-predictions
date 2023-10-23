@@ -1,6 +1,7 @@
 import Awards from "./components/Awards";
 import ContentNav from "./components/ContentNav";
 import Nav from "./components/Nav";
+import Teams from "./components/Teams";
 import Standings from "./components/Standings";
 import "./css/App.css";
 
@@ -17,6 +18,7 @@ function App() {
       <main>
         <Standings />
         <Awards />
+        <Teams />
         {/* 
         <ContentNav
           headers={["MVP", "DPOY", "ROTY", "SMOTY", "MIP", "COTY"]}

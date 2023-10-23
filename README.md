@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### User Stories
+
+user can select a player in each entry point
+user is suggest names as they type
+user is warned if they have the same player in separate linked teams
+user can move team rows in standings table
+user can sign in to see predictions
+user can share predictions
+user can see what percentage of users chose that player in predictions
