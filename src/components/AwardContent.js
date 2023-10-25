@@ -1,3 +1,5 @@
+import SearchBar from "./SearchBar";
+
 function AwardContent({ header, mainImage, playerName, honorableMentions }) {
   return (
     <>
@@ -6,7 +8,7 @@ function AwardContent({ header, mainImage, playerName, honorableMentions }) {
       </div>
       <div className="award-container">
         <div className="award-header">
-          <h2>{playerName}</h2>
+          <SearchBar />
         </div>
 
         <div className="img-container">
@@ -21,11 +23,13 @@ function AwardContent({ header, mainImage, playerName, honorableMentions }) {
           {honorableMentions &&
             Object.entries(honorableMentions).map(([key, value]) => (
               <>
-                <div>
+                <div className="hm-table-child">
                   <img className="headshot" src={value} alt={key} />
                 </div>
-                <div>
-                  <h4>{key}</h4>
+                <div className="hm-table-child">
+                  <div>
+                    <SearchBar />
+                  </div>
                 </div>
               </>
             ))}

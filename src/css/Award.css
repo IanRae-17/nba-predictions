@@ -55,14 +55,13 @@ h2 {
 .hm-table {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
     height: 100%;
     width: 100%;
     align-items: center;
-    
 }
 
-.hm-table div {
+.hm-table .hm-table-child {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,10 +69,10 @@ h2 {
     background-color: white;
     border-bottom: .5px solid rgb(240, 240, 240);
     border-radius: .25rem;
-    
 }
 
 .headshot {
     max-width: 50%;
     border-radius: 50%;
+    height: auto;
 }

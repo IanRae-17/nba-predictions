@@ -1,0 +1,41 @@
+.player-input {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.5px solid rgb(240, 240, 240);
+  padding: 0.5rem;
+  width: 100%;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.06);
+  text-align: center;
+}
+
+.search-bar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    position: relative; /* Set the position to relative */
+  }
+.live-results {
+    background-color: white;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    position: absolute; /* Set the position to absolute */
+    top: 100%; /* Position it below the input */
+    left: 0; /* Align it with the left edge of the container */
+    z-index: 1; /* Ensure it's on top */
+    max-height: 11rem;
+    overflow-y: scroll;
+  }
+
+.live-results div {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.live-results div:hover {
+  background-color: black;
+  color: white;
+}
