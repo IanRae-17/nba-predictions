@@ -6,25 +6,36 @@ function Nav() {
   return (
     <div className="nav-container">
       <ul>
-        <li>
-          <a>Standings Predictions</a>
-        </li>
-        <li>
-          <a>Awards</a>
-        </li>
-        <li>
-          <a>All-NBA Teams</a>
-        </li>
-        {!isLoading && !user && (
+        <div>
           <li>
-            <button onClick={() => loginWithRedirect()}>Log In</button>
+            <a>Standings Predictions</a>
           </li>
-        )}
-        {!isLoading && user && (
           <li>
-            <button onClick={() => logout()}>Log Out</button>
+            <a>Awards</a>
           </li>
-        )}
+          <li>
+            <a>All-NBA Teams</a>
+          </li>
+        </div>
+        <div>
+          {!isLoading && !user && (
+            <li>
+              <button
+                className="session-button"
+                onClick={() => loginWithRedirect()}
+              >
+                Log In
+              </button>
+            </li>
+          )}
+          {!isLoading && user && (
+            <li>
+              <button className="session-button" onClick={() => logout()}>
+                Log Out
+              </button>
+            </li>
+          )}
+        </div>
       </ul>
     </div>
   );
