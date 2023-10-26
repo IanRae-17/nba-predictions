@@ -1,3 +1,5 @@
+import SearchBar from "./SearchBar";
+
 function Team({ header, players }) {
   return (
     <>
@@ -8,7 +10,7 @@ function Team({ header, players }) {
         {Object.entries(players).map(([name, image]) => (
           <div className="team-player">
             <img className="team-image" src={image} />
-            <h3>{name}</h3>
+            <SearchBar />
           </div>
         ))}
       </div>
