@@ -1,6 +1,14 @@
 import SearchBar from "./SearchBar";
-
-function AwardContent({ header, mainImage, playerName, honorableMentions }) {
+import DefaultImage from "../assets/default_hs.avif";
+import { connect } from "react-redux";
+function AwardContent({
+  header,
+  mainImage,
+  playerName,
+  honorableMentions,
+  award,
+  prediction,
+}) {
   return (
     <>
       <div className="award-main-header">
@@ -8,11 +16,24 @@ function AwardContent({ header, mainImage, playerName, honorableMentions }) {
       </div>
       <div className="award-container">
         <div className="award-header">
-          <SearchBar />
+          {prediction && !prediction[award]["choice"] ? (
+            <SearchBar award={award} slot="choice" />
+          ) : (
+            <h3>{prediction[award]["choice"].name}</h3>
+          )}
         </div>
 
         <div className="img-container">
-          <img src={mainImage} />
+          {" "}
+          {console.log(prediction[award])}
+          <img
+            src={
+              prediction && !prediction[award]["choice"]
+                ? DefaultImage
+                : `https://cdn.nba.com/headshots/nba/latest/1040x760/${prediction[award]["choice"].player_id}.png`
+            }
+            alt="Player Image"
+          />
         </div>
       </div>
       <div className="award-container">
@@ -21,14 +42,35 @@ function AwardContent({ header, mainImage, playerName, honorableMentions }) {
         </div>
         <div className="hm-table">
           {honorableMentions &&
-            Object.entries(honorableMentions).map(([key, value]) => (
+            Object.entries(honorableMentions).map(([key, value], index) => (
               <>
                 <div className="hm-table-child">
-                  <img className="headshot" src={value} alt={key} />
+                  <img
+                    className="headshot"
+                    src={
+                      prediction && !prediction[award]["hm" + String(index + 1)]
+                        ? DefaultImage
+                        : `https://cdn.nba.com/headshots/nba/latest/1040x760/${
+                            prediction[award]["hm" + String(index + 1)]
+                              .player_id
+                          }.png`
+                    }
+                    alt={key}
+                  />
                 </div>
                 <div className="hm-table-child">
                   <div>
-                    <SearchBar />
+                    {prediction &&
+                    !prediction[award]["hm" + String(index + 1)] ? (
+                      <SearchBar
+                        award={award}
+                        slot={"hm" + String(index + 1)}
+                      />
+                    ) : (
+                      <h3>
+                        {prediction[award]["hm" + String(index + 1)].name}
+                      </h3>
+                    )}
                   </div>
                 </div>
               </>
@@ -39,4 +81,10 @@ function AwardContent({ header, mainImage, playerName, honorableMentions }) {
   );
 }
 
-export default AwardContent;
+const mapStateToProps = (state) => {
+  return { prediction: state.prediction };
+};
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AwardContent);

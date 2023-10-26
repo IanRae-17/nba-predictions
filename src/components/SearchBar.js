@@ -1,7 +1,11 @@
 import "../css/search_bar.css";
 import { useState, useRef, useEffect } from "react";
 
-function SearchBar() {
+import { setPlayer } from "../slices/predicitonSlice";
+
+import { connect } from "react-redux";
+
+function SearchBar({ setPlayer, award, slot }) {
   const [results, setResults] = useState(null);
 
   function handleChange(e) {
@@ -29,7 +33,9 @@ function SearchBar() {
       {results && (
         <div className="live-results">
           {results.map((result) => (
-            <div>{result.name}</div>
+            <div onClick={() => setPlayer({ award, slot, result })}>
+              {result.name}
+            </div>
           ))}
         </div>
       )}
@@ -37,7 +43,15 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+const mapStateToProps = (state) => {
+  return { prediction: state.prediction };
+};
+
+const mapDispatchToProps = {
+  setPlayer,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
 
 const players = [
   {

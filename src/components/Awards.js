@@ -36,6 +36,7 @@ function Awards() {
     <div className="awards-container">
       <AwardContent
         header={"Most Valuable Player"}
+        award={"MVP"}
         mainImage={JokicImage}
         playerName="Nikola Jokic"
         honorableMentions={{
@@ -46,6 +47,7 @@ function Awards() {
       />
       <AwardContent
         header={"Defensive Player of the Year"}
+        award={"DPOY"}
         mainImage={GiannisImage}
         playerName="Giannis Antetokounmpo"
         honorableMentions={{
@@ -56,6 +58,7 @@ function Awards() {
       />
       <AwardContent
         header={"Sixth Man of the Year"}
+        award={"SMOY"}
         mainImage={PaulImage}
         playerName="Chris Paul"
         honorableMentions={{
@@ -66,6 +69,7 @@ function Awards() {
       />
       <AwardContent
         header={"Rookie of the Year"}
+        award={"ROY"}
         mainImage={VictorImage}
         playerName="Victor Wembanyama"
         honorableMentions={{
@@ -76,6 +80,7 @@ function Awards() {
       />
       <AwardContent
         header={"Most Improved Player"}
+        award={"MIP"}
         mainImage={ObiImage}
         playerName="Obi Toppin"
         honorableMentions={{
@@ -86,6 +91,7 @@ function Awards() {
       />
       <AwardContent
         header={"Coach of the Year"}
+        award={"COY"}
         mainImage={QuinnImage}
         playerName="Quinn Snyder"
         honorableMentions={{
