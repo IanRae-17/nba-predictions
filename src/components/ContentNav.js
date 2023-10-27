@@ -1,16 +1,16 @@
 import "../css/content_nav.css";
 
 function ContentNav({ headers, activePage, setActivePage }) {
-  function renderHeader(header) {
+  function renderHeader(header, index) {
     if (activePage === header) {
       return (
-        <li className="active">
+        <li className="active" key={index}>
           <a onClick={() => setActivePage(header)}>{header}</a>
         </li>
       );
     } else {
       return (
-        <li>
+        <li key={index}>
           <a onClick={() => setActivePage(header)}>{header}</a>
         </li>
       );
@@ -18,7 +18,9 @@ function ContentNav({ headers, activePage, setActivePage }) {
   }
   return (
     <div className="content-nav-container">
-      <ul>{headers && headers.map((header) => renderHeader(header))}</ul>
+      <ul>
+        {headers && headers.map((header, index) => renderHeader(header, index))}
+      </ul>
     </div>
   );
 }

@@ -7,8 +7,8 @@ function Team({ header, players }) {
         <h1>{header}</h1>
       </div>
       <div className="team-container">
-        {Object.entries(players).map(([name, image]) => (
-          <div className="team-player">
+        {Object.entries(players).map(([name, image], index) => (
+          <div className="team-player" key={index}>
             <img className="team-image" src={image} />
             <SearchBar />
           </div>

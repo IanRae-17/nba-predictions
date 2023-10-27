@@ -39,3 +39,13 @@
   background-color: black;
   color: white;
 }
+
+.live-results-text {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  font-size: 1.17em;
+  font-weight: bold;
+}

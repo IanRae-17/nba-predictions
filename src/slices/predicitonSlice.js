@@ -48,8 +48,13 @@ const predictionSlice = createSlice({
 
       state[award][slot] = result;
     },
+    deletePlayer: (state, action) => {
+      const { award, slot } = action.payload;
+
+      state[award][slot] = null;
+    },
   },
 });
 
-export const { setPlayer } = predictionSlice.actions;
+export const { setPlayer, deletePlayer } = predictionSlice.actions;
 export default predictionSlice.reducer;

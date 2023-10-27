@@ -1,14 +1,27 @@
 import SearchBar from "./SearchBar";
 import DefaultImage from "../assets/default_hs.avif";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+
+import { useState } from "react";
+
+import { deletePlayer } from "../slices/predicitonSlice";
+
 function AwardContent({
   header,
-  mainImage,
-  playerName,
   honorableMentions,
   award,
   prediction,
+  deletePlayer,
 }) {
+  function handleEdit(player, award, slot) {
+    deletePlayer({ award, slot });
+    setMainValue(player.name);
+  }
+
+  const [mainValue, setMainValue] = useState("");
+
   return (
     <>
       <div className="award-main-header">
@@ -17,15 +30,22 @@ function AwardContent({
       <div className="award-container">
         <div className="award-header">
           {prediction && !prediction[award]["choice"] ? (
-            <SearchBar award={award} slot="choice" />
+            <SearchBar award={award} slot="choice" value={mainValue} />
           ) : (
-            <h3>{prediction[award]["choice"].name}</h3>
+            <div className="player-header">
+              <h3>{prediction[award]["choice"].name}</h3>
+              <FontAwesomeIcon
+                className="player-header-icon"
+                icon={faPen}
+                onClick={() =>
+                  handleEdit(prediction[award]["choice"], award, "choice")
+                }
+              />
+            </div>
           )}
         </div>
 
         <div className="img-container">
-          {" "}
-          {console.log(prediction[award])}
           <img
             src={
               prediction && !prediction[award]["choice"]
@@ -55,6 +75,7 @@ function AwardContent({
                               .player_id
                           }.png`
                     }
+                    key={key}
                     alt={key}
                   />
                 </div>
@@ -65,11 +86,25 @@ function AwardContent({
                       <SearchBar
                         award={award}
                         slot={"hm" + String(index + 1)}
+                        value={""}
                       />
                     ) : (
-                      <h3>
-                        {prediction[award]["hm" + String(index + 1)].name}
-                      </h3>
+                      <div className="player-header">
+                        <h3>
+                          {prediction[award]["hm" + String(index + 1)].name}
+                        </h3>
+                        <FontAwesomeIcon
+                          className="player-header-icon"
+                          icon={faPen}
+                          onClick={() =>
+                            handleEdit(
+                              prediction[award]["hm" + String(index + 1)].name,
+                              award,
+                              "hm" + String(index + 1)
+                            )
+                          }
+                        />
+                      </div>
                     )}
                   </div>
                 </div>
@@ -85,6 +120,6 @@ const mapStateToProps = (state) => {
   return { prediction: state.prediction };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { deletePlayer };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AwardContent);

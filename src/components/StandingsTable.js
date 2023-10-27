@@ -11,12 +11,12 @@ function StandingsTable({ header, standings }) {
       <div>
         <table>
           <tbody>
-            {standings.map((standing) => (
-              <tr>
-                <div className="img-container">
+            {standings.map((standing, index) => (
+              <tr key={index}>
+                <td className="img-container">
                   <img src={teamImages[standing]} />
-                </div>
-                <div>{standing}</div>
+                </td>
+                <td>{standing}</td>
               </tr>
             ))}
           </tbody>

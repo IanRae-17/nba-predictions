@@ -5,14 +5,26 @@ import { setPlayer } from "../slices/predicitonSlice";
 
 import { connect } from "react-redux";
 
-function SearchBar({ setPlayer, award, slot }) {
+function SearchBar({ setPlayer, award, slot, value }) {
   const [results, setResults] = useState(null);
+  const [realValue, setRealValue] = useState(value);
+
+  useEffect(() => {
+    if (value && value !== "") {
+      if (!realValue.trim()) return setResults(null);
+
+      const filteredValue = players.filter((player) =>
+        player.name.toLowerCase().includes(realValue.toLowerCase())
+      );
+
+      setResults(filteredValue);
+    }
+  }, [value]);
 
   function handleChange(e) {
     let value = e.target.value;
 
-    console.log(value);
-
+    setRealValue(value);
     if (!value.trim()) return setResults(null);
 
     const filteredValue = players.filter((player) =>
@@ -26,14 +38,19 @@ function SearchBar({ setPlayer, award, slot }) {
     <div className="search-bar-container">
       <input
         type="text"
+        value={realValue}
         className="player-input"
         placeholder="Make Your Choice..."
         onChange={handleChange}
       />
       {results && (
         <div className="live-results">
-          {results.map((result) => (
-            <div onClick={() => setPlayer({ award, slot, result })}>
+          {results.map((result, index) => (
+            <div
+              className="live-results-text"
+              onClick={() => setPlayer({ award, slot, result })}
+              key={index}
+            >
               {result.name}
             </div>
           ))}
