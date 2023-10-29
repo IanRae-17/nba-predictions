@@ -79,3 +79,4 @@ user can sign in to see predictions
 user can share predictions
 user can see what percentage of users chose that player in predictions
 user is suggested their previous winners in the all def, nba, rookie teams
+change coach of the year

@@ -37,6 +37,13 @@ const initialPreictionState = {
     hm2: null,
     hm3: null,
   },
+  firstTeam: [null, null, null, null, null],
+  secondTeam: [null, null, null, null, null],
+  thirdTeam: [null, null, null, null, null],
+  firstTeamDef: [null, null, null, null, null],
+  secondTeamDef: [null, null, null, null, null],
+  firstTeamRookie: [null, null, null, null, null],
+  secondTeamRookie: [null, null, null, null, null],
 };
 
 const predictionSlice = createSlice({

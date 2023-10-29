@@ -51,6 +51,7 @@ function Teams() {
   return (
     <>
       <Team
+        award={"firstTeam"}
         header={"All-NBA First Team"}
         players={{
           "Nikola Jokic": JokicImage,
@@ -61,6 +62,7 @@ function Teams() {
         }}
       />
       <Team
+        award={"secondTeam"}
         header={"All-NBA Second Team"}
         players={{
           "Stephen Curry": CurryImage,
@@ -71,6 +73,7 @@ function Teams() {
         }}
       />
       <Team
+        award={"thirdTeam"}
         header={"All-NBA Third Team"}
         players={{
           "Tyrese Haliburton": TyreseImage,
@@ -81,6 +84,7 @@ function Teams() {
         }}
       />
       <Team
+        award={"firstTeamDef"}
         header={"All-Defensive First Team"}
         players={{
           "Giannis Antetokounmpo": GiannisImage,
@@ -91,6 +95,7 @@ function Teams() {
         }}
       />
       <Team
+        award={"secondTeamDef"}
         header={"All-Defensive Second Team"}
         players={{
           "Dejounte Murray": DejounteImage,
@@ -101,7 +106,8 @@ function Teams() {
         }}
       />
       <Team
-        header={"All-Defensive Second Team"}
+        award={"firstTeamRookie"}
+        header={"All-Rookie First Team"}
         players={{
           "Victor Wembanyama": VictorImage,
           "Chet Holmgren": HolmgrenImage,
@@ -112,7 +118,8 @@ function Teams() {
       />
 
       <Team
-        header={"All-Defensive Second Team"}
+        award={"secondTeamRookie"}
+        header={"All-Rookie Second Team"}
         players={{
           "Amen Thompson": AmenImage,
           "Jaime Jaquez Jr": JaquezImage,
