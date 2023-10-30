@@ -9,7 +9,7 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from "react";
 
-function Team({ header, players, award, prediction, deletePlayer }) {
+function Team({ header, players, award, prediction, deletePlayer, filter }) {
   function handleEdit(player, award, slot) {
     console.log(player, award, slot);
     deletePlayer({ award, slot });
@@ -23,7 +23,7 @@ function Team({ header, players, award, prediction, deletePlayer }) {
         <h1>{header}</h1>
       </div>
       <div className="team-container">
-        {Object.entries(players).map(([name, image], index) => (
+        {Array.from({ length: 5 }, (_, index) => (
           <div className="team-player" key={index}>
             <img
               className="team-image"
@@ -35,7 +35,12 @@ function Team({ header, players, award, prediction, deletePlayer }) {
               alt="Player Image"
             />
             {prediction && !prediction[award][index] ? (
-              <SearchBar award={award} slot={index} value={mainValue} />
+              <SearchBar
+                award={award}
+                slot={index}
+                value={mainValue}
+                filter={filter}
+              />
             ) : (
               <div className="player-header">
                 <h3>{prediction[award][index].name}</h3>

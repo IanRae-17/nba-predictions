@@ -14,6 +14,7 @@ function AwardContent({
   award,
   prediction,
   deletePlayer,
+  filter,
 }) {
   function handleEdit(player, award, slot) {
     deletePlayer({ award, slot });
@@ -30,7 +31,12 @@ function AwardContent({
       <div className="award-container">
         <div className="award-header">
           {prediction && !prediction[award]["choice"] ? (
-            <SearchBar award={award} slot="choice" value={mainValue} />
+            <SearchBar
+              award={award}
+              slot="choice"
+              value={mainValue}
+              filter={filter}
+            />
           ) : (
             <div className="player-header">
               <h3>{prediction[award]["choice"].name}</h3>
@@ -61,55 +67,54 @@ function AwardContent({
           <h2>Honorable Mentions</h2>
         </div>
         <div className="hm-table">
-          {honorableMentions &&
-            Object.entries(honorableMentions).map(([key, value], index) => (
-              <>
-                <div className="hm-table-child">
-                  <img
-                    className="headshot"
-                    src={
-                      prediction && !prediction[award]["hm" + String(index + 1)]
-                        ? DefaultImage
-                        : `https://cdn.nba.com/headshots/nba/latest/1040x760/${
-                            prediction[award]["hm" + String(index + 1)]
-                              .player_id
-                          }.png`
-                    }
-                    key={key}
-                    alt={key}
-                  />
-                </div>
-                <div className="hm-table-child">
-                  <div>
-                    {prediction &&
-                    !prediction[award]["hm" + String(index + 1)] ? (
-                      <SearchBar
-                        award={award}
-                        slot={"hm" + String(index + 1)}
-                        value={""}
+          {Array.from({ length: 3 }, (_, index) => (
+            <>
+              <div className="hm-table-child" key={index}>
+                <img
+                  className="headshot"
+                  src={
+                    prediction && !prediction[award]["hm" + String(index + 1)]
+                      ? DefaultImage
+                      : `https://cdn.nba.com/headshots/nba/latest/1040x760/${
+                          prediction[award]["hm" + String(index + 1)].player_id
+                        }.png`
+                  }
+                  alt={"Player Image " + (index + 1)}
+                  key={index}
+                />
+              </div>
+              <div className="hm-table-child" key={"child" + index}>
+                <div>
+                  {prediction &&
+                  !prediction[award]["hm" + String(index + 1)] ? (
+                    <SearchBar
+                      award={award}
+                      slot={"hm" + String(index + 1)}
+                      value={""}
+                      filter={filter}
+                    />
+                  ) : (
+                    <div className="player-header">
+                      <h3>
+                        {prediction[award]["hm" + String(index + 1)].name}
+                      </h3>
+                      <FontAwesomeIcon
+                        className="player-header-icon"
+                        icon={faPen}
+                        onClick={() =>
+                          handleEdit(
+                            prediction[award]["hm" + String(index + 1)].name,
+                            award,
+                            "hm" + String(index + 1)
+                          )
+                        }
                       />
-                    ) : (
-                      <div className="player-header">
-                        <h3>
-                          {prediction[award]["hm" + String(index + 1)].name}
-                        </h3>
-                        <FontAwesomeIcon
-                          className="player-header-icon"
-                          icon={faPen}
-                          onClick={() =>
-                            handleEdit(
-                              prediction[award]["hm" + String(index + 1)].name,
-                              award,
-                              "hm" + String(index + 1)
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
-              </>
-            ))}
+              </div>
+            </>
+          ))}
         </div>
       </div>
     </>
