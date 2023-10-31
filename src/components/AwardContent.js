@@ -21,7 +21,21 @@ function AwardContent({
     setMainValue(player.name);
   }
 
+  function handleHMEdit(player, award, slot, index) {
+    deletePlayer({ award, slot });
+    const changedHM = hmValue.map((value, idx) => {
+      if (idx === index) {
+        return player;
+      } else {
+        return value;
+      }
+    });
+
+    setHMValue(changedHM);
+  }
+
   const [mainValue, setMainValue] = useState("");
+  const [hmValue, setHMValue] = useState(["", "", ""]);
 
   return (
     <>
@@ -90,7 +104,7 @@ function AwardContent({
                     <SearchBar
                       award={award}
                       slot={"hm" + String(index + 1)}
-                      value={""}
+                      value={hmValue[index]}
                       filter={filter}
                     />
                   ) : (
@@ -102,10 +116,11 @@ function AwardContent({
                         className="player-header-icon"
                         icon={faPen}
                         onClick={() =>
-                          handleEdit(
+                          handleHMEdit(
                             prediction[award]["hm" + String(index + 1)].name,
                             award,
-                            "hm" + String(index + 1)
+                            "hm" + String(index + 1),
+                            index
                           )
                         }
                       />
