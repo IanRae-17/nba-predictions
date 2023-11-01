@@ -10,7 +10,7 @@ function Teams() {
         header={"All-NBA Second Team"}
         filter={"ALL"}
       />
-      <Team award={"thirdTeam"} header={"All-NBA Third Team"} filter={"ALL"} />
+      {/* <Team award={"thirdTeam"} header={"All-NBA Third Team"} filter={"ALL"} />
       <Team
         award={"firstTeamDef"}
         header={"All-Defensive First Team"}
@@ -31,7 +31,7 @@ function Teams() {
         award={"secondTeamRookie"}
         header={"All-Rookie Second Team"}
         filter={"ROOKIE"}
-      />
+      /> */}
     </>
   );
 }

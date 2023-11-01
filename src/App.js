@@ -9,7 +9,7 @@ function App() {
     <div className="main-container">
       <Nav />
       <main>
-        <Standings />
+        {/* <Standings /> */}
         <Awards />
         <Teams />
       </main>

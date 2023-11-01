@@ -9,7 +9,7 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from "react";
 
-function Team({ header, players, award, prediction, deletePlayer, filter }) {
+function Team({ header, award, prediction, deletePlayer, filter }) {
   function handleEdit(player, award, slot) {
     console.log(player, award, slot);
     deletePlayer({ award, slot });
@@ -17,8 +17,9 @@ function Team({ header, players, award, prediction, deletePlayer, filter }) {
   }
 
   const [mainValue, setMainValue] = useState("");
+
   return (
-    <>
+    <div className="team-title-container">
       <div className="award-main-header">
         <h1>{header}</h1>
       </div>
@@ -56,7 +57,7 @@ function Team({ header, players, award, prediction, deletePlayer, filter }) {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
